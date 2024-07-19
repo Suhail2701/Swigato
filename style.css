@@ -1,5 +1,3 @@
-#header
-{
-    color: red;
-    font-size: 40px;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
