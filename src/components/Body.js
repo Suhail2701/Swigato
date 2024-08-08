@@ -8,6 +8,7 @@ import UserContext from "../utils/UserContext";
 // import { NO_RESULT_IMG } from "../utils/constants";
 import noResultImg from "../../public/noresult.jpg";
 import { isMobile } from "react-device-detect";
+import { PROXY_URL } from "../utils/constants";
 
 
 
@@ -32,7 +33,8 @@ const Body = () => {
 
     const fetchData = async () => {
         try {
-            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+            
+            const data = await fetch(PROXY_URL + "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             const json = await data.json();
             console.log(json);
             // setResList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);

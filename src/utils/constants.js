@@ -10,3 +10,5 @@ export const NO_RESULT_IMG = "https://cdn.dribbble.com/users/1554526/screenshots
 export const AI_API_KEY = "sk-UlV7XwynN8GFuewzFyOXb1zKwwsbUxDjJRBHJYoycvT3BlbkFJDeHA4utkjtvAJuS-mbMW3lscGgbQvKbQUqhnbt-9MA";
                          
 export const AI_API_KEY2 = "sk-go_8-T53QwEyzxoNIxDRccKi4hOfREeM8GxZOOra_ST3BlbkFJxQZWiXwi2FyZabXbxPLuR-1_Vsb24RzZnKxT9RbM8A";
+
+export const PROXY_URL = "https://thingproxy.freeboard.io/fetch/";
