@@ -4,6 +4,7 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import { useState } from "react";
 import menuImg from "../../public/menu.png";
+import { isMobile } from "react-device-detect";
 
 
 const RestaurantMenu = () => {
@@ -24,7 +25,7 @@ const RestaurantMenu = () => {
 
     // const { name, cuisines, costForTwoMessage } = resinfo?.data?.cards[2]?.card?.card?.info;
     const info = resinfo?.data?.cards[2]?.card?.card?.info;
-    console.log(info);
+    // console.log(info);
     // const { itemCards } = resinfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
     // console.log(resinfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
@@ -34,13 +35,13 @@ const RestaurantMenu = () => {
     // })
 
     const categories =
-        resinfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
+        resinfo?.data?.cards[isMobile?5:4]?.groupedCard?.cardGroupMap?.REGULAR
             ?.cards.filter((c) => {
                 return c?.card?.card?.["@type"] ===
                     "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
             }) || [];
 
-    console.log(categories);
+    // console.log(categories);
 
     return (
         <div className="text-center my-10 ">

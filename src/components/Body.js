@@ -7,6 +7,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 // import { NO_RESULT_IMG } from "../utils/constants";
 import noResultImg from "../../public/noresult.jpg";
+import { isMobile } from "react-device-detect";
 
 
 
@@ -33,13 +34,15 @@ const Body = () => {
         try {
             const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             const json = await data.json();
-            // console.log(json);
+            console.log(json);
             // setResList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
             // setfilteredList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
             //json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-            const restaurantsList = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-            // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            const restaurantsList = isMobile? json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [] : json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
+
+            // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            // console.log(restaurantsList);
             setResList(restaurantsList);
             setfilteredList(restaurantsList);
         } catch (err) {
@@ -78,14 +81,14 @@ const Body = () => {
     console.log(filterdList);
     return (
         <div className="w-10/12  mx-auto ">
-            <div className="flex  justify-between my-5">
-                <div className="m-4">
-                    <input type="text" className="border-2 border-solid border-gray-300 p-3 pr-12 text-xl rounded-3xl bg-gray-100 " placeholder="Search for Restaurants..." value={searchBtn} onChange={handleSearchChange} />
+            <div className="flex  justify-between my-5 xs:flex-col xs:items-center ">
+                <div className="m-4  xs:w-full">
+                    <input type="text" className="border-2 border-solid border-gray-300 p-3 pr-12 text-xl rounded-3xl bg-gray-100 xs:text-sm xs:p-2 xs:w-full sm:text-lg md:text-xl sm:p-2 md:p-3" placeholder="Search for Restaurants..." value={searchBtn} onChange={handleSearchChange} />
                 </div>
 
-                <div className="flex items-center">
+                <div className="flex items-center xs:flex-col">
                     <button
-                        className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl shadow-sm "
+                        className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl shadow-sm xs:text-sm xs:p-2 sm:text-lg sm:p-2 md:text-xl md:p-3"
                         onClick={() => {
                             const filterd = resList1.filter(
                                 (res) => res.info.avgRating >= 4.5
@@ -95,7 +98,7 @@ const Body = () => {
                         Top Rated Restaurant
                     </button>
                     <button
-                        className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl  shadow-sm"
+                        className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl  shadow-sm xs:text-sm xs:p-2 sm:text-lg sm:p-2 md:text-xl md:p-3"
                         onClick={() => {
                             setfilteredList(resList1);
                             setsearchBtn("");

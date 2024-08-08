@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
 import { CART_URL } from "../utils/constants";
-import {ToastContainer, toast} from "react-toastify";
+import {  toast, Slide, Zoom, Flip, Bounce } from "react-toastify";
+
 
 const AddButton = ({ itemData, items }) => {
 
@@ -11,12 +12,23 @@ const AddButton = ({ itemData, items }) => {
     const addItemHandler = (itemData, items) => {
         dispatch(addItem({ itemData, items }));
         toast.success("Item added in your cart.",{
-            duration:2000,
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            progress: undefined,
+            transition: Slide,
         });
     }
 
     const removeItemHandler = (itemData, items) => {
         dispatch(removeItem({ itemData, items }));
+        toast.error("Item removed from your cart.",{
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            progress: undefined,
+            transition: Slide,
+        })
     }
 
     const itemExists = cartItems.find((item) => item.id === itemData?.card?.info?.id);
@@ -26,6 +38,7 @@ const AddButton = ({ itemData, items }) => {
     return (
         <div className="relative">
             <img src={CART_URL + itemData?.card?.info?.imageId} className="h-44 w-full  rounded-lg mt-5" />
+            {/* <Toaster richColors /> */}
             <div className="absolute flex items-center justify-center text-white bg-gray-800 p-1 rounded-md left-[40%] bottom-0 ">
                 {!itemExists ? (
                     <div>

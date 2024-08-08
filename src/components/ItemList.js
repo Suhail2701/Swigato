@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { CART_URL } from "../utils/constants";
 import { addItem } from "../utils/cartSlice";
 import AddButton from "./AddButton";
+// import { Toaster } from "sonner";
 
 const ItemList = ({ item, items }) => {
     console.log(item);
@@ -31,6 +32,7 @@ const ItemList = ({ item, items }) => {
                             {/* <button className="absolute bg-black text-white rounded-lg p-2" onClick={() => handleAddItem(item)}>
                                 Add +
                             </button> */}
+                            
                             <AddButton itemData={item} items={items} key={item?.card?.info?.id} />
                             {/* <img src={CART_URL + item?.card?.info?.imageId} className="h-44 w-full  rounded-lg" /> */}
                         </div>

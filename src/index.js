@@ -8,6 +8,9 @@ import Contact from "./components/Contact"
 import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu";
 import Cart from "./components/Cart";
+import DashBoard from "./components/DashBoard";
+import Login from "./components/Login";
+import GptSearch from "./components/GptSearch";
 
 
 // const Grocery = lazy(() => import("./components/Grocery"));
@@ -20,6 +23,14 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/",
+                element: <DashBoard />
+            },
+            {
+                path: "/Login",
+                element: <Login />
+            },
+            {
+                path: "/list",
                 element: <Body />
             },
             {
@@ -29,6 +40,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />
+            },
+            {
+                path: "/gpt",
+                element: <GptSearch />
             },
             // {
             //     path: "/grocery",
