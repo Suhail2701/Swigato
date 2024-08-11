@@ -1,0 +1,32 @@
+
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+
+.shimmer-card, .shimmer-image, .shimmer-accordian {
+   
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 1200px 100%;
+    animation: shimmer 1.5s linear infinite;
+}
+
+/* .shimmer-tittle, .shimmer-cuisines, .shimmer-row
+{
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 1200px 100%;
+    animation: shimmer 1.5s linear infinite;
+} */
+
+.shimmer-card-dark, .shimmer-image-dark, .shimmer-accordian-dark {
+   
+    /* background: #7dd3fc1a; */
+    background: linear-gradient(to right, #38226b 8%, #30195a 18%, #301c66 33%);
+    background-size: 1200px 100%;
+    animation: shimmer 1.5s linear infinite;
+}

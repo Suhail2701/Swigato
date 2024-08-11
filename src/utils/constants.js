@@ -11,4 +11,6 @@ export const AI_API_KEY = "sk-UlV7XwynN8GFuewzFyOXb1zKwwsbUxDjJRBHJYoycvT3BlbkFJ
                          
 export const AI_API_KEY2 = "sk-go_8-T53QwEyzxoNIxDRccKi4hOfREeM8GxZOOra_ST3BlbkFJxQZWiXwi2FyZabXbxPLuR-1_Vsb24RzZnKxT9RbM8A";
 
+
+// export const PROXY_URL = "https://thingproxy-760k.onrender.com/fetch/";
 export const PROXY_URL = "https://thingproxy.freeboard.io/fetch/";

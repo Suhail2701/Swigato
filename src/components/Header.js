@@ -97,13 +97,13 @@ const Header = () => {
 
     return (
         <div className={`${darkModeState && "dark"}`}>
-            <div className="flex justify-between p-2 shadow-lg px-6 dark:bg-customGray xs:px-3 ">
+            <div className={`flex justify-between p-2 shadow-lg px-6 dark:bg-c1 xs:px-3  xs:items-center xs:justify-center ${LoginUser ?'xs:flex-col':'xs:flex-row'} ${!LoginUser && 'xs:justify-between'}`}>
                 <div className="logo-container">
                     <img className="w-36 xs:w-16 sm:w-28 md:w-36" src={darkModeState ? logoImg2 : logoImg} />
                 </div>
 
                 <div className="flex items-center ">
-                    <ul className="flex  text-2xl px-3 xs:px-[2px] xs:text-[10px] sm:text-[20px] md:text-2xl text-slate-700  hover:text-slate-900 xs:leading-4 items-center">
+                    <ul className="flex  text-2xl px-3 xs:px-[2px] xs:text-[15px] sm:text-[20px] md:text-2xl text-slate-700  hover:text-slate-900 xs:leading-4 items-center xs:justify-around xs:mt-2 xs:mb-2">
                         {/* <li className="px-3">Online Status: {onlineStatus?"🟢":"🔴"}</li> */}
                         {/* {LoginUser &&<li><Link to="/gpt">GPT</Link></li>} */}
                         {LoginUser && <li className="px-3 xs:px-[5px] sm:px-[8px] md:px-3 dark:text-white "><Link to="/list">Home</Link></li>}
@@ -117,11 +117,11 @@ const Header = () => {
 
 
                             {/* Hover section */}
-                            <div className="absolute top-10 right-2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 w-64 z-20 hidden group-hover:block">
+                            <div className="absolute top-10 right-2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 w-64 z-20 hidden group-hover:block dark:bg-c2">
                                 <div className="flex flex-col items-center">
                                     <img src="https://eskipaper.com/images/yellow-angry-bird-1.jpg" alt="img" className="w-20 h-20 rounded-full mb-2 object-cover" />
-                                    <p className="text-lg font-semibold">{LoginUser?.displayName || "User Name"} </p>
-                                    <p className="text-sm text-gray-500">{LoginUser?.email || "user@example.com"}</p>
+                                    <p className="text-lg font-semibold dark:text-c3">{LoginUser?.displayName || "User Name"} </p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">{LoginUser?.email || "user@example.com"}</p>
                                     <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg text-xl hover:text-yellow-500"
                                         onClick={handleSgnOut}>Sign Out</button>
 

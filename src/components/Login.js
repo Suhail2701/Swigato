@@ -19,7 +19,7 @@ const Login = () => {
 
     const dispatch = useDispatch();
 
-    const darkMode = useSelector((store)=>store.darkMode);
+    const darkMode = useSelector((store) => store.darkMode);
 
     const email = useRef(null);
     const password = useRef(null);
@@ -116,23 +116,23 @@ const Login = () => {
     }
     return (
         <div className={`${darkMode && "dark"}`}>
-            <div className="h-[83vh] w-screen overflow-hidden relative dark:bg-customBlue   ">
-            <div className="w-5/12 md:w-3/12 absolute  border border-solid border-yellow-400 mx-auto text-center dark:border-white top-[20%] left-[35%] p-4 text-2xl z-10 rounded-xl bg-black bg-opacity-10 shadow-xl">
-                <h1 className="font-bold text-3xl p-4 dark:text-white">{isSignIn ? "Sign In" : "Sign Up"}</h1>
-                <form className="w-10/12 mx-auto text-gray-900" onSubmit={(e) => e.preventDefault()}>
-                    {!isSignIn && <input type="text" placeholder="Full Name" ref={name} className="border border-solid border-black w-full p-2 my-4 bg-transparent rounded-xl dark:text-white" />}
-                    <input type="email" placeholder="email" ref={email} className="border border-solid border-black w-full p-2 my-4 bg-transparent rounded-xl dark:text-white" />
-                    <input type="password" placeholder="password" ref={password} className="border border-solid border-black w-full p-2 my-4 bg-transparent rounded-xl dark:text-white" />
-                    <p className=" text-red-600 text-lg">{errMessage}</p>
-                    <button className="border border-solid border-black p-2 my-4 rounded-lg bg-yellow-400 hover:bg-white hover:text-yellow-500 text-lg font-bold dark:border-white"
-                        onClick={handleButtonClick}>{isSignIn ? "Sign In" : "Sign Up"}</button>
-                    <p onClick={toggleHandler} className="cursor-pointer hover:text-yellow-500 my-4 text-lg dark:text-white">
-                        {isSignIn ? "New to Swigato? Sign Up Now" : "Already redistered? Sign In now.."}
-                    </p>
-                </form>
+            <div className=" relative dark:bg-c2   ">
+                <div className="w-5/12 sm:w-8/12  xs:w-10/12 md:w-6/12 lg:w-4/12 absolute  border border-solid border-yellow-400 mx-auto text-center dark:border-white top-[20%] left-[35%] xs:left-[9%] xs:top-[15%] sm:left-[16%] md:left-[25%] md:top-[15%] lg:left-[34%] p-4 text-2xl xs:text-lg sm:text-2xl  z-10 rounded-xl bg-black bg-opacity-10 shadow-xl">
+                    <h1 className="font-bold text-3xl p-4 dark:text-white">{isSignIn ? "Sign In" : "Sign Up"}</h1>
+                    <form className="w-10/12 xs:w-full md:w-9/12 mx-auto text-gray-900" onSubmit={(e) => e.preventDefault()}>
+                        {!isSignIn && <input type="text" placeholder="Full Name" ref={name} className="border border-solid border-black w-full p-2 my-4 bg-transparent rounded-xl dark:text-white dark:border-white" />}
+                        <input type="email" placeholder="email" ref={email} className="border border-solid border-black w-full p-2 my-4 bg-transparent rounded-xl dark:text-white dark:border-white " />
+                        <input type="password" placeholder="password" ref={password} className="border border-solid border-black w-full p-2 my-4 bg-transparent rounded-xl dark:text-white dark:border-white" />
+                        <p className=" text-red-600 text-lg">{errMessage}</p>
+                        <button className="border border-solid border-black p-2 my-4 rounded-lg bg-yellow-400 hover:bg-white hover:text-yellow-500 text-lg font-bold dark:border-white"
+                            onClick={handleButtonClick}>{isSignIn ? "Sign In" : "Sign Up"}</button>
+                        <p onClick={toggleHandler} className="cursor-pointer hover:text-yellow-500 my-4 text-lg dark:text-white">
+                            {isSignIn ? "New to Swigato? Sign Up Now" : "Already redistered? Sign In now.."}
+                        </p>
+                    </form>
+                </div>
+                <img src={darkMode ? LoginBg2 : LoginBg} alt="Login BackGround" className=" opacity-20 h-screen w-screen object-cover" />
             </div>
-            <img src={darkMode?LoginBg2:LoginBg} alt="Login BackGround" className="w-full opacity-20" />
-        </div>
         </div>
     )
 }

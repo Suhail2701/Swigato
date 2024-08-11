@@ -9,6 +9,7 @@ import UserContext from "../utils/UserContext";
 import noResultImg from "../../public/noresult.jpg";
 import { isMobile } from "react-device-detect";
 import { PROXY_URL } from "../utils/constants";
+import { useSelector } from "react-redux";
 
 
 
@@ -23,6 +24,8 @@ const Body = () => {
 
     const { setUserName, loggedInUser } = useContext(UserContext);
 
+    const darkMode = useSelector((store) => store.darkMode)
+
 
     //Higher Order Component 
     const RestaurantCardPromoted = withPromtedLable(RestaurantCard);
@@ -33,14 +36,14 @@ const Body = () => {
 
     const fetchData = async () => {
         try {
-            
+
             const data = await fetch(PROXY_URL + "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
             const json = await data.json();
             console.log(json);
             // setResList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
             // setfilteredList(json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
             //json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-            const restaurantsList = isMobile? json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [] : json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+            const restaurantsList = isMobile ? json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [] : json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
 
             // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -82,50 +85,54 @@ const Body = () => {
     }
     console.log(filterdList);
     return (
-        <div className="w-10/12  mx-auto ">
-            <div className="flex  justify-between my-5 xs:flex-col xs:items-center ">
-                <div className="m-4  xs:w-full">
-                    <input type="text" className="border-2 border-solid border-gray-300 p-3 pr-12 text-xl rounded-3xl bg-gray-100 xs:text-sm xs:p-2 xs:w-full sm:text-lg md:text-xl sm:p-2 md:p-3" placeholder="Search for Restaurants..." value={searchBtn} onChange={handleSearchChange} />
-                </div>
+        <div className={`${darkMode && "dark"} `}>
+            <div className="min-h-screen w-full dark:bg-c2">
+                <div className="w-10/12  mx-auto xs:w-[98%] sm:w-[98%] md:w-10/12   ">
+                    <div className="flex  justify-between mb-5 pt-5 xs:flex-col xs:items-center ">
+                        <div className="m-4  xs:w-full xs:px-2">
+                            <input type="text" className="border-2 border-solid border-gray-300 p-3 pr-12 text-xl rounded-3xl bg-gray-100 xs:text-sm xs:p-2 xs:w-full sm:text-lg md:text-xl sm:p-2 md:p-3  dark:bg-c4 dark:text-gray-400 dark:border-gray-400" placeholder="Search for Restaurants..." value={searchBtn} onChange={handleSearchChange} />
+                        </div>
 
-                <div className="flex items-center xs:flex-col">
-                    <button
-                        className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl shadow-sm xs:text-sm xs:p-2 sm:text-lg sm:p-2 md:text-xl md:p-3"
-                        onClick={() => {
-                            const filterd = resList1.filter(
-                                (res) => res.info.avgRating >= 4.5
-                            );
-                            setfilteredList(filterd);
-                        }} >
-                        Top Rated Restaurant
-                    </button>
-                    <button
-                        className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl  shadow-sm xs:text-sm xs:p-2 sm:text-lg sm:p-2 md:text-xl md:p-3"
-                        onClick={() => {
-                            setfilteredList(resList1);
-                            setsearchBtn("");
-                        }} >
-                        Reset
-                    </button>
-                </div>
-                {/* <div className="flex items-center">
+                        <div className="flex items-center xs:flex-col">
+                            <button
+                                className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl shadow-sm xs:text-sm xs:p-2 sm:text-lg sm:p-2 md:text-xl md:p-3  dark:bg-c4 dark:text-gray-400 dark:border-gray-400"
+                                onClick={() => {
+                                    const filterd = resList1.filter(
+                                        (res) => res.info.avgRating >= 4.5
+                                    );
+                                    setfilteredList(filterd);
+                                }} >
+                                Top Rated Restaurant
+                            </button>
+                            <button
+                                className=" p-3 m-2 bg-gray-200 hover:bg-gray-300 rounded-md text-xl  shadow-sm xs:text-sm xs:p-2 sm:text-lg sm:p-2 md:text-xl md:p-3  dark:bg-c4 dark:text-gray-400 dark:border-gray-400"
+                                onClick={() => {
+                                    setfilteredList(resList1);
+                                    setsearchBtn("");
+                                }} >
+                                Reset
+                            </button>
+                        </div>
+                        {/* <div className="flex items-center">
                     <label>User Name:</label>
                     <input className="border border-black p-1 ml-3" value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
                 </div> */}
-            </div>
+                    </div>
 
-            <div className="flex flex-wrap max-lg:mx-auto max-smx:mx-auto justify-center items-center h-100% w-100%">
-                {
-                    filterdList.length === 0 ? (<div className="w-4/12 mx-auto ">
-                        <img src={noResultImg} alt="No Results" className="flex justify-center items-center w-full " />
-                    </div>) : (filterdList.map((restaurant) => (
-                        <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}>
-                            {
-                                restaurant.info.isOpen ? <RestaurantCardPromoted resList={restaurant} /> : <RestaurantCard resList={restaurant} />
-                            }
-                        </Link>)))
-                }
+                    <div className="flex flex-wrap max-lg:mx-auto max-smx:mx-auto justify-center items-center h-100% w-100%">
+                        {
+                            filterdList.length === 0 ? (<div className="w-4/12 mx-auto ">
+                                <img src={noResultImg} alt="No Results" className="flex justify-center items-center w-full " />
+                            </div>) : (filterdList.map((restaurant) => (
+                                <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}>
+                                    {
+                                        restaurant.info.isOpen ? <RestaurantCardPromoted resList={restaurant} /> : <RestaurantCard resList={restaurant} />
+                                    }
+                                </Link>)))
+                        }
 
+                    </div>
+                </div>
             </div>
         </div>
     );
