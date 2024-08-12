@@ -39,7 +39,7 @@ const AddButton = ({ itemData, items }) => {
         <div className="relative">
             <img src={CART_URL + itemData?.card?.info?.imageId} className="h-44 w-full  rounded-lg mt-5 xs:h-20 object-cover sm:h-20 md:h-24 lg:h-24 xl:h-44 xl:w-full" />
             {/* <Toaster richColors /> */}
-            <div className="absolute flex items-center justify-center text-white bg-gray-800 p-1 rounded-md left-[40%] bottom-0   xs:left-[36%] md:left-[38%] lg:left-[40%] xs:p-0  sm:left-[32%] sm:p-0 xl:p-1 ">
+            <div className="absolute flex items-center justify-center text-white bg-gray-800 p-1 rounded-md left-[40%] bottom-0   xs:left-[36%] md:left-[40%] lg:left-[35%] xl:left-[38%] xs:p-0  sm:left-[32%] sm:p-0 xl:p-1 ">
                 {!itemExists ? (
                     <div>
                         <button className="px-2 text-lg xs:text-[10px]  xs:px-1 sm:text-[10px] sm:px-1 xl:text-lg xl:px-2 hover:text-yellow-400" onClick={() => addItemHandler(itemData, items)}>
