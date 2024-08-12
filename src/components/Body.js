@@ -87,7 +87,7 @@ const Body = () => {
     return (
         <div className={`${darkMode && "dark"} `}>
             <div className="min-h-screen w-full dark:bg-c2">
-                <div className="w-10/12  mx-auto xs:w-[98%] sm:w-[98%] md:w-10/12 lg:w-11/12 xl:w-11/12 ">
+                <div className="w-10/12  mx-auto xs:w-[98%] sm:w-[98%] md:w-11/12 lg:w-11/12 xl:w-11/12 ">
                     <div className="flex  justify-between mb-5 pt-5 xs:flex-col xs:items-center ">
                         <div className="m-4  xs:w-full xs:px-2">
                             <input type="text" className="border-2 border-solid border-gray-300 p-3 pr-12 text-xl rounded-3xl bg-gray-100 xs:text-sm xs:p-2 xs:w-full sm:text-lg md:text-xl sm:p-2 md:p-3  dark:bg-c4 dark:text-gray-400 dark:border-gray-400" placeholder="Search for Restaurants..." value={searchBtn} onChange={handleSearchChange} />
